@@ -79,6 +79,8 @@ func (r *ReverseSocks5) ConnectForSocks() error {
 	}
 	cator := socks5.UserPassAuthenticator{Credentials: cred}
 	conf := &socks5.Config{AuthMethods: []socks5.Authenticator{cator}}
+	// 不能用密码，因为另外一端并不知道密码是什么
+	//conf := &socks5.Config{}
 	server, err := socks5.New(conf)
 	if err != nil {
 		return err

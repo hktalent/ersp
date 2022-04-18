@@ -31,6 +31,7 @@ func main() {
 	rr := core.NewReverseSocks5(*key)
 	if *socks != "" {
 		log.Println("Starting to listen for clients")
+		fmt.Println("socks5：\nusername：", rr.Sha1(*key), "\npasswd:", *key)
 		go rr.ListenForSocks()
 		log.Fatal(rr.ListenForClients(*socks))
 	}
